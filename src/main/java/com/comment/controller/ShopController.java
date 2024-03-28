@@ -5,7 +5,7 @@ import cn.hutool.core.util.StrUtil;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.comment.model.dto.Result;
 import com.comment.model.entity.Shop;
-import com.comment.service.IShopService;
+import com.comment.service.ShopService;
 import com.comment.utils.SystemConstants;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,7 +19,7 @@ import javax.annotation.Resource;
 public class ShopController {
 
     @Resource
-    public IShopService shopService;
+    public ShopService shopService;
 
     /**
      * 根据id查询商铺信息
@@ -64,11 +64,9 @@ public class ShopController {
     @GetMapping("/of/type")
     public Result queryShopByType(
             @RequestParam("typeId") Integer typeId,
-            @RequestParam(value = "current", defaultValue = "1") Integer current,
-            @RequestParam(value = "x", required = false) Double x,
-            @RequestParam(value = "y", required = false) Double y
+            @RequestParam(value = "current", defaultValue = "1") Integer current
     ) {
-       return shopService.queryShopByType(typeId, current, x, y);
+       return shopService.queryShopByType(typeId, current);
     }
 
     /**

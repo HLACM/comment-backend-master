@@ -2,7 +2,7 @@ package com.comment.controller;
 
 
 import com.comment.model.dto.Result;
-import com.comment.service.IFollowService;
+import com.comment.service.FollowService;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -15,7 +15,7 @@ import javax.annotation.Resource;
 public class FollowController {
 
     @Resource
-    private IFollowService followService;
+    private FollowService followService;
 
     @PutMapping("/{id}/{isFollow}")
     public Result follow(@PathVariable("id") Long followUserId, @PathVariable("isFollow") Boolean isFollow) {

@@ -5,8 +5,8 @@ import com.comment.model.dto.Result;
 import com.comment.model.entity.SeckillVoucher;
 import com.comment.model.entity.Voucher;
 import com.comment.mapper.VoucherMapper;
-import com.comment.service.ISeckillVoucherService;
-import com.comment.service.IVoucherService;
+import com.comment.service.SeckillVoucherService;
+import com.comment.service.VoucherService;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -14,7 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 import javax.annotation.Resource;
 import java.util.List;
 
-import static com.comment.utils.RedisConstants.SECKILL_STOCK_KEY;
+import static com.comment.constant.RedisConstants.SECKILL_STOCK_KEY;
 
 /**
  * <p>
@@ -25,10 +25,10 @@ import static com.comment.utils.RedisConstants.SECKILL_STOCK_KEY;
  *    
  */
 @Service
-public class VoucherServiceImpl extends ServiceImpl<VoucherMapper, Voucher> implements IVoucherService {
+public class VoucherServiceImpl extends ServiceImpl<VoucherMapper, Voucher> implements VoucherService {
 
     @Resource
-    private ISeckillVoucherService seckillVoucherService;
+    private SeckillVoucherService seckillVoucherService;
     @Resource
     private StringRedisTemplate stringRedisTemplate;
 

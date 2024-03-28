@@ -12,6 +12,6 @@ import com.comment.model.entity.ShopType;
  *   
  *    
  */
-public interface IShopTypeService extends IService<ShopType> {
+public interface ShopTypeService extends IService<ShopType> {
     Result queryList();
 }

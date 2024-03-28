@@ -3,7 +3,7 @@ package com.comment.service.impl;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.comment.model.entity.SeckillVoucher;
 import com.comment.mapper.SeckillVoucherMapper;
-import com.comment.service.ISeckillVoucherService;
+import com.comment.service.SeckillVoucherService;
 import org.springframework.stereotype.Service;
 
 /**
@@ -15,6 +15,6 @@ import org.springframework.stereotype.Service;
  * @since 2022-01-04
  */
 @Service
-public class SeckillVoucherServiceImpl extends ServiceImpl<SeckillVoucherMapper, SeckillVoucher> implements ISeckillVoucherService {
+public class SeckillVoucherServiceImpl extends ServiceImpl<SeckillVoucherMapper, SeckillVoucher> implements SeckillVoucherService {
 
 }

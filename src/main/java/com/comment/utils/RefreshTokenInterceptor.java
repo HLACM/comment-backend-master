@@ -11,8 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
-import static com.comment.utils.RedisConstants.LOGIN_USER_KEY;
-import static com.comment.utils.RedisConstants.LOGIN_USER_TTL;
+import static com.comment.constant.RedisConstants.LOGIN_USER_KEY;
+import static com.comment.constant.RedisConstants.LOGIN_USER_TTL;
 
 public class RefreshTokenInterceptor implements HandlerInterceptor {
     private StringRedisTemplate stringRedisTemplate;

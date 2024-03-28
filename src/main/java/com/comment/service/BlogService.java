@@ -12,7 +12,7 @@ import com.comment.model.entity.Blog;
  *   
  *    
  */
-public interface IBlogService extends IService<Blog> {
+public interface BlogService extends IService<Blog> {
 
     Result queryHotBlog(Integer current);
 

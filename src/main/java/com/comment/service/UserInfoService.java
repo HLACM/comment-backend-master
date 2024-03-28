@@ -9,8 +9,8 @@ import com.comment.model.entity.UserInfo;
  * </p>
  *
  *   
- * @since 2021-12-24
+ *     
  */
-public interface IUserInfoService extends IService<UserInfo> {
+public interface UserInfoService extends IService<UserInfo> {
 
 }

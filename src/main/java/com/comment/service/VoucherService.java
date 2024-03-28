@@ -12,7 +12,7 @@ import com.comment.model.entity.Voucher;
  *   
  *    
  */
-public interface IVoucherService extends IService<Voucher> {
+public interface VoucherService extends IService<Voucher> {
 
     Result queryVoucherOfShop(Long shopId);
 

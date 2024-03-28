@@ -11,9 +11,9 @@ import com.comment.model.entity.Blog;
 import com.comment.model.entity.Follow;
 import com.comment.model.entity.User;
 import com.comment.mapper.BlogMapper;
-import com.comment.service.IBlogService;
-import com.comment.service.IFollowService;
-import com.comment.service.IUserService;
+import com.comment.service.BlogService;
+import com.comment.service.FollowService;
+import com.comment.service.UserService;
 import com.comment.utils.SystemConstants;
 import com.comment.utils.UserHolder;
 import org.springframework.data.redis.core.StringRedisTemplate;
@@ -27,8 +27,8 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-import static com.comment.utils.RedisConstants.BLOG_LIKED_KEY;
-import static com.comment.utils.RedisConstants.FEED_KEY;
+import static com.comment.constant.RedisConstants.BLOG_LIKED_KEY;
+import static com.comment.constant.RedisConstants.FEED_KEY;
 
 /**
  * <p>
@@ -39,16 +39,16 @@ import static com.comment.utils.RedisConstants.FEED_KEY;
  *    
  */
 @Service
-public class BlogServiceImpl extends ServiceImpl<BlogMapper, Blog> implements IBlogService {
+public class BlogServiceImpl extends ServiceImpl<BlogMapper, Blog> implements BlogService {
 
     @Resource
-    private IUserService userService;
+    private UserService userService;
 
     @Resource
     private StringRedisTemplate stringRedisTemplate;
 
     @Resource
-    private IFollowService followService;
+    private FollowService followService;
 
     @Override
     public Result queryHotBlog(Integer current) {

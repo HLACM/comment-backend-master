@@ -12,7 +12,7 @@ import com.comment.model.entity.Follow;
  *   
  *    
  */
-public interface IFollowService extends IService<Follow> {
+public interface FollowService extends IService<Follow> {
 
     Result follow(Long followUserId, Boolean isFollow);
 

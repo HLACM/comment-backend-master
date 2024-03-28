@@ -15,8 +15,8 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 import java.util.function.Function;
 
-import static com.comment.utils.RedisConstants.CACHE_NULL_TTL;
-import static com.comment.utils.RedisConstants.LOCK_SHOP_KEY;
+import static com.comment.constant.RedisConstants.CACHE_NULL_TTL;
+import static com.comment.constant.RedisConstants.LOCK_SHOP_KEY;
 
 @Slf4j
 @Component

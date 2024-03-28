@@ -15,7 +15,7 @@ import javax.servlet.http.HttpSession;
  *   
  *    
  */
-public interface IUserService extends IService<User> {
+public interface UserService extends IService<User> {
 
     Result sendCode(String phone, HttpSession session);
 

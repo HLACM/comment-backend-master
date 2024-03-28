@@ -11,6 +11,6 @@ import com.comment.model.entity.SeckillVoucher;
  *   
  * @since 2022-01-04
  */
-public interface ISeckillVoucherService extends IService<SeckillVoucher> {
+public interface SeckillVoucherService extends IService<SeckillVoucher> {
 
 }

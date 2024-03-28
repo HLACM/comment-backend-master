@@ -12,11 +12,11 @@ import com.comment.model.entity.Shop;
  *   
  *    
  */
-public interface IShopService extends IService<Shop> {
+public interface ShopService extends IService<Shop> {
 
     Result queryById(Long id);
 
     Result update(Shop shop);
 
-    Result queryShopByType(Integer typeId, Integer current, Double x, Double y);
+    Result queryShopByType(Integer typeId, Integer current);
 }

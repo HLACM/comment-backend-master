@@ -10,7 +10,7 @@ import com.comment.model.dto.Result;
 import com.comment.model.dto.UserDTO;
 import com.comment.model.entity.User;
 import com.comment.mapper.UserMapper;
-import com.comment.service.IUserService;
+import com.comment.service.UserService;
 import com.comment.utils.RegexUtils;
 import com.comment.utils.UserHolder;
 import lombok.extern.slf4j.Slf4j;
@@ -27,7 +27,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
-import static com.comment.utils.RedisConstants.*;
+import static com.comment.constant.RedisConstants.*;
 import static com.comment.utils.SystemConstants.USER_NICK_NAME_PREFIX;
 
 /**
@@ -40,7 +40,7 @@ import static com.comment.utils.SystemConstants.USER_NICK_NAME_PREFIX;
  */
 @Slf4j
 @Service
-public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IUserService {
+public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements UserService {
 
     @Resource
     private StringRedisTemplate stringRedisTemplate;

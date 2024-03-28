@@ -11,6 +11,6 @@ import com.comment.model.entity.BlogComments;
  *   
  *    
  */
-public interface IBlogCommentsService extends IService<BlogComments> {
+public interface BlogCommentsService extends IService<BlogComments> {
 
 }

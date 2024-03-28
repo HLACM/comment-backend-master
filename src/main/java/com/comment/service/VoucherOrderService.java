@@ -5,14 +5,11 @@ import com.comment.model.dto.Result;
 import com.comment.model.entity.VoucherOrder;
 
 /**
- * <p>
  *  服务类
- * </p>
- *
- *   
- *    
  */
-public interface IVoucherOrderService extends IService<VoucherOrder> {
+public interface VoucherOrderService extends IService<VoucherOrder> {
 
     Result seckillVoucher(Long voucherId);
+
+    void createVoucherOrder(VoucherOrder voucherOrder);
 }

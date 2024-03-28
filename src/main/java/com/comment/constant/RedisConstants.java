@@ -1,4 +1,4 @@
-package com.comment.utils;
+package com.comment.constant;
 
 public class RedisConstants {
     public static final String LOGIN_CODE_KEY = "login:code:";

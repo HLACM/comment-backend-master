@@ -2,7 +2,7 @@ package com.comment.controller;
 
 
 import com.comment.model.dto.Result;
-import com.comment.service.IVoucherOrderService;
+import com.comment.service.VoucherOrderService;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,7 +18,7 @@ import javax.annotation.Resource;
 public class VoucherOrderController {
 
     @Resource
-    private IVoucherOrderService voucherOrderService;
+    private VoucherOrderService voucherOrderService;
 
     @PostMapping("seckill/{id}")
     public Result seckillVoucher(@PathVariable("id") Long voucherId) {

@@ -6,7 +6,7 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.comment.model.dto.Result;
 import com.comment.model.entity.ShopType;
 import com.comment.mapper.ShopTypeMapper;
-import com.comment.service.IShopTypeService;
+import com.comment.service.ShopTypeService;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
 
@@ -14,7 +14,7 @@ import javax.annotation.Resource;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-import static com.comment.utils.RedisConstants.SHOPTYPE_LIST_KEY;
+import static com.comment.constant.RedisConstants.SHOPTYPE_LIST_KEY;
 
 /**
  * <p>
@@ -25,7 +25,7 @@ import static com.comment.utils.RedisConstants.SHOPTYPE_LIST_KEY;
  *    
  */
 @Service
-public class ShopTypeServiceImpl extends ServiceImpl<ShopTypeMapper, ShopType> implements IShopTypeService {
+public class ShopTypeServiceImpl extends ServiceImpl<ShopTypeMapper, ShopType> implements ShopTypeService {
 
     @Resource
     private StringRedisTemplate stringRedisTemplate;

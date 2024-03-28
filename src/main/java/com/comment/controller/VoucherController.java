@@ -3,7 +3,7 @@ package com.comment.controller;
 
 import com.comment.model.dto.Result;
 import com.comment.model.entity.Voucher;
-import com.comment.service.IVoucherService;
+import com.comment.service.VoucherService;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -16,7 +16,7 @@ import javax.annotation.Resource;
 public class VoucherController {
 
     @Resource
-    private IVoucherService voucherService;
+    private VoucherService voucherService;
 
     /**
      * 新增秒杀券

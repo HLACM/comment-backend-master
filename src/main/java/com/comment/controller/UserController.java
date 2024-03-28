@@ -7,8 +7,8 @@ import com.comment.model.dto.Result;
 import com.comment.model.dto.UserDTO;
 import com.comment.model.entity.User;
 import com.comment.model.entity.UserInfo;
-import com.comment.service.IUserInfoService;
-import com.comment.service.IUserService;
+import com.comment.service.UserInfoService;
+import com.comment.service.UserService;
 import com.comment.utils.UserHolder;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
@@ -25,10 +25,10 @@ import javax.servlet.http.HttpSession;
 public class UserController {
 
     @Resource
-    private IUserService userService;
+    private UserService userService;
 
     @Resource
-    private IUserInfoService userInfoService;
+    private UserInfoService userInfoService;
 
     /**
      * 发送手机验证码
@@ -55,8 +55,8 @@ public class UserController {
      */
     @PostMapping("/logout")
     public Result logout(){
-        // TODO 实现登出功能
-        return Result.fail("功能未完成");
+        UserHolder.removeUser();
+        return Result.ok();
     }
 
     @GetMapping("/me")
