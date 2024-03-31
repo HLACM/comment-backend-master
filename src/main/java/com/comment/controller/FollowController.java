@@ -1,7 +1,7 @@
 package com.comment.controller;
 
 
-import com.comment.model.dto.Result;
+import com.comment.common.Result;
 import com.comment.service.FollowService;
 import org.springframework.web.bind.annotation.*;
 

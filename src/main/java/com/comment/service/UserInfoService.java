@@ -4,11 +4,7 @@ import com.baomidou.mybatisplus.extension.service.IService;
 import com.comment.model.entity.UserInfo;
 
 /**
- * <p>
- *  服务类
- * </p>
- *
- *   
+ *服务类
  *     
  */
 public interface UserInfoService extends IService<UserInfo> {

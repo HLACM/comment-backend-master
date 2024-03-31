@@ -4,7 +4,7 @@ import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.util.StrUtil;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.comment.model.dto.Result;
+import com.comment.common.Result;
 import com.comment.model.dto.ScrollResult;
 import com.comment.model.dto.UserDTO;
 import com.comment.model.entity.Blog;
@@ -14,8 +14,8 @@ import com.comment.mapper.BlogMapper;
 import com.comment.service.BlogService;
 import com.comment.service.FollowService;
 import com.comment.service.UserService;
-import com.comment.utils.SystemConstants;
-import com.comment.utils.UserHolder;
+import com.comment.constant.SystemConstants;
+import com.comment.common.UserHolder;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.data.redis.core.ZSetOperations;
 import org.springframework.stereotype.Service;
@@ -31,11 +31,9 @@ import static com.comment.constant.RedisConstants.BLOG_LIKED_KEY;
 import static com.comment.constant.RedisConstants.FEED_KEY;
 
 /**
- * <p>
- * 服务实现类
- * </p>
  *
- *   
+ * 服务实现类
+ 
  *    
  */
 @Service

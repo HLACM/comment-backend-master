@@ -1,4 +1,4 @@
-package com.comment.utils;
+package com.comment.common;
 
 
 import cn.hutool.core.util.RandomUtil;

@@ -1,6 +1,6 @@
 package com.comment.config;
 
-import com.comment.model.dto.Result;
+import com.comment.common.Result;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;

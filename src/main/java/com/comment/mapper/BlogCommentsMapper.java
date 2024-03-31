@@ -4,11 +4,8 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.comment.model.entity.BlogComments;
 
 /**
- * <p>
- *  Mapper 接口
- * </p>
  *
- *   
+ *  Mapper 接口
  *    
  */
 public interface BlogCommentsMapper extends BaseMapper<BlogComments> {

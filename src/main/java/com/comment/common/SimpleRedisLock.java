@@ -1,6 +1,7 @@
-package com.comment.utils;
+package com.comment.common;
 
 import cn.hutool.core.lang.UUID;
+import com.comment.utils.ILock;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.data.redis.core.script.DefaultRedisScript;

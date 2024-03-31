@@ -1,10 +1,15 @@
-package com.comment.utils;
+package com.comment.interceptor;
 
+import com.comment.common.UserHolder;
 import org.springframework.web.servlet.HandlerInterceptor;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+/**
+ * 登录校验拦截器，第二层拦截器
+ * 只执行校验功能，业务功能在第一层拦截器已经完成（保存用户）
+ */
 public class LoginInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request,

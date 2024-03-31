@@ -1,4 +1,4 @@
-package com.comment.model.dto;
+package com.comment.common;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -6,6 +6,9 @@ import lombok.NoArgsConstructor;
 
 import java.util.List;
 
+/**
+ * 通用返回结果类
+ */
 @Data
 @NoArgsConstructor
 @AllArgsConstructor

@@ -3,7 +3,7 @@ package com.comment.service.impl;
 import cn.hutool.core.util.StrUtil;
 import cn.hutool.json.JSONUtil;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.comment.model.dto.Result;
+import com.comment.common.Result;
 import com.comment.model.entity.ShopType;
 import com.comment.mapper.ShopTypeMapper;
 import com.comment.service.ShopTypeService;
@@ -17,11 +17,9 @@ import java.util.concurrent.TimeUnit;
 import static com.comment.constant.RedisConstants.SHOPTYPE_LIST_KEY;
 
 /**
- * <p>
- *  服务实现类
- * </p>
  *
- *   
+ *  服务实现类
+ 
  *    
  */
 @Service

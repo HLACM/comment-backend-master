@@ -1,4 +1,4 @@
-package com.comment.utils;
+package com.comment.common;
 
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Component;

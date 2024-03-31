@@ -4,11 +4,9 @@ import com.baomidou.mybatisplus.extension.service.IService;
 import com.comment.model.entity.BlogComments;
 
 /**
- * <p>
- *  服务类
- * </p>
  *
- *   
+ *  服务类
+ 
  *    
  */
 public interface BlogCommentsService extends IService<BlogComments> {

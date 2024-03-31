@@ -2,12 +2,12 @@ package com.comment.controller;
 
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.comment.model.dto.Result;
+import com.comment.common.Result;
 import com.comment.model.dto.UserDTO;
 import com.comment.model.entity.Blog;
 import com.comment.service.BlogService;
-import com.comment.utils.SystemConstants;
-import com.comment.utils.UserHolder;
+import com.comment.constant.SystemConstants;
+import com.comment.common.UserHolder;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -15,6 +15,7 @@ import java.util.List;
 
 /**
  * 博客管理业务
+ *
  */
 @RestController
 @RequestMapping("/blog")

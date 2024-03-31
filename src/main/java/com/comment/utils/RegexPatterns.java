@@ -1,6 +1,9 @@
 package com.comment.utils;
 
- 
+
+/**
+ * 正则表达式
+ */
 public abstract class RegexPatterns {
     /**
      * 手机号正则

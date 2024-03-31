@@ -1,33 +1,25 @@
 package com.comment.service.impl;
 
-import cn.hutool.core.bean.BeanUtil;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.comment.constant.RabbitmqConstant;
-import com.comment.model.dto.Result;
+import com.comment.common.Result;
 import com.comment.model.entity.VoucherOrder;
 import com.comment.mapper.VoucherOrderMapper;
 import com.comment.service.SeckillVoucherService;
 import com.comment.service.VoucherOrderService;
-import com.comment.utils.RedisIdWorker;
-import com.comment.utils.UserHolder;
+import com.comment.common.RedisIdWorker;
+import com.comment.common.UserHolder;
 import lombok.extern.slf4j.Slf4j;
 import org.redisson.api.RLock;
 import org.redisson.api.RedissonClient;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.core.io.ClassPathResource;
-import org.springframework.data.redis.connection.stream.*;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.data.redis.core.script.DefaultRedisScript;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
-import java.time.Duration;
 import java.util.Collections;
-import java.util.List;
-import java.util.Map;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 
 /**
  * 服务实现类

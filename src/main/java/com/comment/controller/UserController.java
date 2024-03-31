@@ -3,13 +3,13 @@ package com.comment.controller;
 
 import cn.hutool.core.bean.BeanUtil;
 import com.comment.model.dto.LoginFormDTO;
-import com.comment.model.dto.Result;
+import com.comment.common.Result;
 import com.comment.model.dto.UserDTO;
 import com.comment.model.entity.User;
 import com.comment.model.entity.UserInfo;
 import com.comment.service.UserInfoService;
 import com.comment.service.UserService;
-import com.comment.utils.UserHolder;
+import com.comment.common.UserHolder;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
@@ -40,7 +40,7 @@ public class UserController {
     }
 
     /**
-     * 登录功能
+     * 登录功能（可提供自动注册）
      * @param loginForm 登录参数，包含手机号、验证码；或者手机号、密码
      */
     @PostMapping("/login")
@@ -48,6 +48,7 @@ public class UserController {
         // 实现登录功能
         return userService.login(loginForm, session);
     }
+
 
     /**
      * 登出功能
@@ -66,6 +67,11 @@ public class UserController {
         return Result.ok(user);
     }
 
+    /**
+     * 查询用户详细信息（个人介绍，城市等）
+     * @param userId
+     * @return
+     */
     @GetMapping("/info/{id}")
     public Result info(@PathVariable("id") Long userId){
         // 查询详情
@@ -80,6 +86,11 @@ public class UserController {
         return Result.ok(info);
     }
 
+    /**
+     * 查询用户基本信息（id，名称等）
+     * @param userId
+     * @return 用户脱敏信息
+     */
     @GetMapping("/{id}")
     public Result queryUserById(@PathVariable("id") Long userId){
         // 查询详情

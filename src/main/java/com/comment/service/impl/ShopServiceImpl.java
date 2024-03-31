@@ -2,12 +2,12 @@ package com.comment.service.impl;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.comment.model.dto.Result;
+import com.comment.common.Result;
 import com.comment.model.entity.Shop;
 import com.comment.mapper.ShopMapper;
 import com.comment.service.ShopService;
-import com.comment.utils.CacheClient;
-import com.comment.utils.SystemConstants;
+import com.comment.common.CacheClient;
+import com.comment.constant.SystemConstants;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -18,11 +18,8 @@ import java.util.concurrent.TimeUnit;
 import static com.comment.constant.RedisConstants.*;
 
 /**
- * <p>
- *  服务实现类
- * </p>
  *
- *   
+ *  服务实现类
  *    
  */
 @Service
@@ -40,14 +37,15 @@ public class ShopServiceImpl extends ServiceImpl<ShopMapper, Shop> implements Sh
         // 解决缓存穿透
         Shop shop = cacheClient
                 .queryWithPassThrough(CACHE_SHOP_KEY, id, Shop.class, this::getById, CACHE_SHOP_TTL, TimeUnit.MINUTES);
-        // 互斥锁解决缓存击穿
+        // 互斥锁解决缓存击穿（需要使用时解开注释）
         // Shop shop = cacheClient
         //         .queryWithMutex(CACHE_SHOP_KEY, id, Shop.class, this::getById, CACHE_SHOP_TTL, TimeUnit.MINUTES);
 
-        // 逻辑过期解决缓存击穿
+        // 逻辑过期解决缓存击穿（需要使用时解开注释）
         // Shop shop = cacheClient
         //         .queryWithLogicalExpire(CACHE_SHOP_KEY, id, Shop.class, this::getById, 20L, TimeUnit.SECONDS);
 
+        //缓存穿透的情况
         if (shop == null) {
             return Result.fail("店铺不存在！");
         }

@@ -1,7 +1,7 @@
 package com.comment.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.comment.model.dto.Result;
+import com.comment.common.Result;
 import com.comment.model.entity.SeckillVoucher;
 import com.comment.model.entity.Voucher;
 import com.comment.mapper.VoucherMapper;
@@ -17,11 +17,9 @@ import java.util.List;
 import static com.comment.constant.RedisConstants.SECKILL_STOCK_KEY;
 
 /**
- * <p>
- *  服务实现类
- * </p>
  *
- *   
+ *  服务实现类
+ 
  *    
  */
 @Service

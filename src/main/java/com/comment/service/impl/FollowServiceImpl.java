@@ -3,13 +3,13 @@ package com.comment.service.impl;
 import cn.hutool.core.bean.BeanUtil;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.comment.model.dto.Result;
+import com.comment.common.Result;
 import com.comment.model.dto.UserDTO;
 import com.comment.model.entity.Follow;
 import com.comment.mapper.FollowMapper;
 import com.comment.service.FollowService;
 import com.comment.service.UserService;
-import com.comment.utils.UserHolder;
+import com.comment.common.UserHolder;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
 
@@ -20,11 +20,9 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 /**
- * <p>
- * 服务实现类
- * </p>
  *
- *   
+ * 服务实现类
+ 
  *    
  */
 @Service

@@ -2,8 +2,8 @@ package com.comment;
 
 import com.comment.model.entity.Shop;
 import com.comment.service.impl.ShopServiceImpl;
-import com.comment.utils.CacheClient;
-import com.comment.utils.RedisIdWorker;
+import com.comment.common.CacheClient;
+import com.comment.common.RedisIdWorker;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 

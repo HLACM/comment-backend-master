@@ -7,11 +7,9 @@ import com.comment.service.BlogCommentsService;
 import org.springframework.stereotype.Service;
 
 /**
- * <p>
- *  服务实现类
- * </p>
  *
- *   
+ *  服务实现类
+ 
  *    
  */
 @Service

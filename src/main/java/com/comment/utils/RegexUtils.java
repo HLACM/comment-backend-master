@@ -2,7 +2,9 @@ package com.comment.utils;
 
 import cn.hutool.core.util.StrUtil;
 
- 
+/**
+ * 格式校验工具类
+ */
 public class RegexUtils {
     /**
      * 是否是无效手机格式
