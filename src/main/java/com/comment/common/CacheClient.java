@@ -27,7 +27,7 @@ public class CacheClient {
     @Resource
     private StringRedisTemplate stringRedisTemplate;
 
-
+    //线程池对象，可以从里面创建独立的线程。利用该线程的submit方法提交一个任务，可以用lambda表达式的形式写
     private static final ExecutorService CACHE_REBUILD_EXECUTOR = Executors.newFixedThreadPool(10);
 
     /**
@@ -125,11 +125,13 @@ public class CacheClient {
             // 3.不存在，直接返回null
             return null;
         }
-        // 4.命中，需要先把json反序列化为对象
+        // 4.命中，先从缓存中提取出RedisData对象
         RedisData redisData = JSONUtil.toBean(json, RedisData.class);
+        //再从RedisData对象中提取出去掉逻辑过期时间的主要数据（redisData.getData()），
+        //把redisData.getData()强转为JSONObject对象，该对象可以理解为就是json格式的数据。再将json数据转换为目标对象R。
         R r = JSONUtil.toBean((JSONObject) redisData.getData(), type);
         LocalDateTime expireTime = redisData.getExpireTime();
-        // 5.判断是否过期
+        // 5.判断是否过期。过期时间在当前时间之后代表还没有过期，在之前代表已经过期了。
         if(expireTime.isAfter(LocalDateTime.now())) {
             // 5.1.未过期，直接返回店铺信息
             return r;
@@ -141,7 +143,7 @@ public class CacheClient {
         boolean isLock = tryLock(lockKey);
         // 6.2.判断是否获取锁成功
         if (isLock){
-            // 6.3.成功，开启独立线程，实现缓存重建
+            // 6.3.成功，从线程池对象中获取一个线程，利用该线程的submit方法提交一个任务，可以用lambda表达式的形式写
             CACHE_REBUILD_EXECUTOR.submit(() -> {
                 try {
                     // 查询数据库

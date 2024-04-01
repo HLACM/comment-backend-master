@@ -7,7 +7,7 @@ import com.comment.model.entity.VoucherOrder;
 import com.comment.mapper.VoucherOrderMapper;
 import com.comment.service.SeckillVoucherService;
 import com.comment.service.VoucherOrderService;
-import com.comment.common.RedisIdWorker;
+import com.comment.utils.RedisIdWorker;
 import com.comment.common.UserHolder;
 import lombok.extern.slf4j.Slf4j;
 import org.redisson.api.RLock;
@@ -17,13 +17,13 @@ import org.springframework.core.io.ClassPathResource;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.data.redis.core.script.DefaultRedisScript;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.util.Collections;
 
 /**
- * 服务实现类
- *
+ * 核心秒杀业务
  */
 @Slf4j
 @Service
@@ -97,13 +97,13 @@ public class VoucherOrderServiceImpl extends ServiceImpl<VoucherOrderMapper, Vou
 
 
     @Override
-    //关于事务注解
+    @Transactional
     public Result seckillVoucher(Long voucherId) {
 //        1,执行lua脚本,lua脚本用于判断库存是否充足,扣库存操作
         Long userId=UserHolder.getUser().getId();
         long orderId=redisIDworker.nextId("order");
 
-        //执行此操作前保证,用户查看优惠券的请求,和添加优惠券时 已经将秒杀优惠圈的库存数量添加到了redis中
+        //执行此操作前保证,用户查看优惠券的请求,和添加优惠券时 已经将秒杀优惠劵的库存数量添加到了redis中
         Long result=stringRedisTemplate.execute(
                 SECKILL_SCRIPT,
                 Collections.emptyList(),

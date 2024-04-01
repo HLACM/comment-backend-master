@@ -11,10 +11,7 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 
 /**
- *
- * 
- 
- *    
+ * 用户类
  */
 @Data
 @EqualsAndHashCode(callSuper = false)

@@ -17,10 +17,7 @@ import java.util.List;
 import static com.comment.constant.RedisConstants.SECKILL_STOCK_KEY;
 
 /**
- *
  *  服务实现类
- 
- *    
  */
 @Service
 public class VoucherServiceImpl extends ServiceImpl<VoucherMapper, Voucher> implements VoucherService {
@@ -30,6 +27,11 @@ public class VoucherServiceImpl extends ServiceImpl<VoucherMapper, Voucher> impl
     @Resource
     private StringRedisTemplate stringRedisTemplate;
 
+    /**
+     * 查询对应店铺的优惠券
+     * @param shopId
+     * @return
+     */
     @Override
     public Result queryVoucherOfShop(Long shopId) {
         // 查询优惠券信息
@@ -38,6 +40,10 @@ public class VoucherServiceImpl extends ServiceImpl<VoucherMapper, Voucher> impl
         return Result.ok(vouchers);
     }
 
+    /**
+     * 新增秒杀券
+     * @param voucher
+     */
     @Override
     @Transactional
     public void addSeckillVoucher(Voucher voucher) {

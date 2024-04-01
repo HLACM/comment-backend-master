@@ -1,5 +1,9 @@
 package com.comment.utils;
 
+
+/**
+ * 自定义分布式锁
+ */
 public interface ILock {
 
     /**

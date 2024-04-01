@@ -1,4 +1,4 @@
-package com.comment.common;
+package com.comment.utils;
 
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Component;
@@ -8,6 +8,10 @@ import java.time.LocalDateTime;
 import java.time.ZoneOffset;
 import java.time.format.DateTimeFormatter;
 
+/**
+ * 全局id生成器
+ *
+ */
 @Component
 public class RedisIdWorker {
     /**
@@ -23,7 +27,7 @@ public class RedisIdWorker {
     private StringRedisTemplate stringRedisTemplate;
 
     public long nextId(String keyPrefix) {
-        // 1.生成时间戳
+        // 1.生成当天日期时间戳作为后缀
         LocalDateTime now = LocalDateTime.now();
         long nowSecond = now.toEpochSecond(ZoneOffset.UTC);
         long timestamp = nowSecond - BEGIN_TIMESTAMP;
