@@ -38,6 +38,7 @@ public class Blog implements Serializable {
     private Long userId;
     /**
      * 用户图标
+     * 博客页面需要显示图标以及用户名字，为其新增一个不存在的字段
      */
     @TableField(exist = false)
     private String icon;

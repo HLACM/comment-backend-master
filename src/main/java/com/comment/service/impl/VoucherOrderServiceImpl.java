@@ -3,6 +3,7 @@ package com.comment.service.impl;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.comment.constant.RabbitmqConstant;
 import com.comment.common.Result;
+import com.comment.constant.RedisConstants;
 import com.comment.model.entity.VoucherOrder;
 import com.comment.mapper.VoucherOrderMapper;
 import com.comment.service.SeckillVoucherService;
@@ -21,6 +22,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.util.Collections;
+import java.util.Set;
 
 /**
  * 核心秒杀业务
@@ -42,15 +44,14 @@ public class VoucherOrderServiceImpl extends ServiceImpl<VoucherOrderMapper, Vou
     @Resource
     private RabbitTemplate rabbitTemplate;
 
-    private static final DefaultRedisScript<Long> SECKILL_SCRIPT;
-
-    static {
-        SECKILL_SCRIPT = new DefaultRedisScript<>();
-        SECKILL_SCRIPT.setLocation(new ClassPathResource("seckill.lua"));
-        SECKILL_SCRIPT.setResultType(Long.class);
-    }
 
 
+
+    /**
+     * 异步创建订单
+     * CAS乐观锁法解决库存超卖问题（多线程情况下的更新问题），分布式锁解决一人一单问题（多线程情况下的插入问题）
+     * @param voucherOrder
+     */
     @Override
     public void createVoucherOrder(VoucherOrder voucherOrder) {
         Long userId = voucherOrder.getUserId();
@@ -76,7 +77,7 @@ public class VoucherOrderServiceImpl extends ServiceImpl<VoucherOrderMapper, Vou
                 return;
             }
 
-            // 6.扣减库存
+            // 6.扣减库存，使用CAS乐观锁思想解决了多线程情况下的库存超卖问题，执行操作前再次判断库存是否大于0
             boolean success = seckillVoucherService.update()
                     .setSql("stock = stock - 1") // set stock = stock - 1
                     .eq("voucher_id", voucherId).gt("stock", 0)
@@ -103,18 +104,24 @@ public class VoucherOrderServiceImpl extends ServiceImpl<VoucherOrderMapper, Vou
         Long userId=UserHolder.getUser().getId();
         long orderId=redisIDworker.nextId("order");
 
-        //执行此操作前保证,用户查看优惠券的请求,和添加优惠券时 已经将秒杀优惠劵的库存数量添加到了redis中
-        Long result=stringRedisTemplate.execute(
-                SECKILL_SCRIPT,
-                Collections.emptyList(),
-                voucherId.toString(), userId.toString(), String.valueOf(orderId)
-        );
-        //获取lua脚本返回值
-        int r=result.intValue();
-        if(r!=0)
-        {
-            return Result.fail(r==1?"库存不足":"不能重复下单");
+
+        String stockKey= RedisConstants.SECKILL_STOCK_KEY+voucherId;
+        //判断redis的中该优惠券是否存在对应用户的购买记录（判断是否存在即可，因为是用set存储）的key
+        String orderKey=RedisConstants.SECKILL_ORDER_KEY+voucherId;
+
+        Integer stock = Integer.valueOf(stringRedisTemplate.opsForValue().get(stockKey));
+        if (stock<=0){
+            return Result.fail("库存不足");
         }
+        Boolean isMember = stringRedisTemplate.opsForSet().isMember(orderKey, userId);
+        //存在，说明是重复下单
+        if (isMember){
+            return Result.fail("不能重复下单");
+        }
+        //扣减库存
+        stringRedisTemplate.opsForValue().increment(stockKey,-1);
+        //保存用户到Redis中（已购买）
+        stringRedisTemplate.opsForSet().add(orderKey,userId.toString());
 
         //异步写数据库
         VoucherOrder voucherOrder = new VoucherOrder();

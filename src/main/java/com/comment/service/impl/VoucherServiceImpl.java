@@ -41,7 +41,7 @@ public class VoucherServiceImpl extends ServiceImpl<VoucherMapper, Voucher> impl
     }
 
     /**
-     * 新增秒杀券
+     * 将优惠券库存保存到Redis中
      * @param voucher
      */
     @Override
