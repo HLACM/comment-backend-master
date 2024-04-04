@@ -157,15 +157,15 @@ CREATE TABLE `tb_shop_type`  (
 -- Records of tb_shop_type
 -- ----------------------------
 INSERT INTO `tb_shop_type` VALUES (1, '美食', '/types/ms.png', 1, '2021-12-22 20:17:47', '2021-12-23 11:24:31');
-INSERT INTO `tb_shop_type` VALUES (2, 'KTV', '/types/KTV.png', 2, '2021-12-22 20:18:27', '2021-12-23 11:24:31');
-INSERT INTO `tb_shop_type` VALUES (3, '丽人·美发', '/types/lrmf.png', 3, '2021-12-22 20:18:48', '2021-12-23 11:24:31');
-INSERT INTO `tb_shop_type` VALUES (4, '健身运动', '/types/jsyd.png', 10, '2021-12-22 20:19:04', '2021-12-23 11:24:31');
-INSERT INTO `tb_shop_type` VALUES (5, '按摩·足疗', '/types/amzl.png', 5, '2021-12-22 20:19:27', '2021-12-23 11:24:31');
-INSERT INTO `tb_shop_type` VALUES (6, '美容SPA', '/types/spa.png', 6, '2021-12-22 20:19:35', '2021-12-23 11:24:31');
-INSERT INTO `tb_shop_type` VALUES (7, '亲子游乐', '/types/qzyl.png', 7, '2021-12-22 20:19:53', '2021-12-23 11:24:31');
-INSERT INTO `tb_shop_type` VALUES (8, '酒吧', '/types/jiuba.png', 8, '2021-12-22 20:20:02', '2021-12-23 11:24:31');
-INSERT INTO `tb_shop_type` VALUES (9, '轰趴馆', '/types/hpg.png', 9, '2021-12-22 20:20:08', '2021-12-23 11:24:31');
-INSERT INTO `tb_shop_type` VALUES (10, '美睫·美甲', '/types/mjmj.png', 4, '2021-12-22 20:21:46', '2021-12-23 11:24:31');
+INSERT INTO `tb_shop_type` VALUES (2, '休闲/玩乐', '/types/KTV.png', 2, '2021-12-22 20:18:27', '2021-12-23 11:24:31');
+INSERT INTO `tb_shop_type` VALUES (3, '理发/女士', '/types/lrmf.png', 3, '2021-12-22 20:18:48', '2021-12-23 11:24:31');
+INSERT INTO `tb_shop_type` VALUES (4, '健身/运动', '/types/jsyd.png', 10, '2021-12-22 20:19:04', '2021-12-23 11:24:31');
+INSERT INTO `tb_shop_type` VALUES (5, '生活服务', '/types/amzl.png', 5, '2021-12-22 20:19:27', '2021-12-23 11:24:31');
+INSERT INTO `tb_shop_type` VALUES (6, '医疗/口腔', '/types/spa.png', 6, '2021-12-22 20:19:35', '2021-12-23 11:24:31');
+INSERT INTO `tb_shop_type` VALUES (7, '亲子乐园', '/types/qzyl.png', 7, '2021-12-22 20:19:53', '2021-12-23 11:24:31');
+INSERT INTO `tb_shop_type` VALUES (8, '酒店民宿', '/types/jiuba.png', 8, '2021-12-22 20:20:02', '2021-12-23 11:24:31');
+INSERT INTO `tb_shop_type` VALUES (9, '电影演出', '/types/hpg.png', 9, '2021-12-22 20:20:08', '2021-12-23 11:24:31');
+INSERT INTO `tb_shop_type` VALUES (10, '景点/周边游', '/types/mjmj.png', 4, '2021-12-22 20:21:46', '2021-12-23 11:24:31');
 
 -- ----------------------------
 -- Table structure for tb_user
